@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@huggingface/transformers": "^3.5.0",
     "cheerio": "^1.0.0",
     "node-fetch": "^3.3.2",
     "robots-parser": "^3.0.1"
