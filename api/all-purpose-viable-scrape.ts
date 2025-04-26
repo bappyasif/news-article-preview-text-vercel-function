@@ -27,18 +27,28 @@ export default async function handler(req, res) {
 
         // Fetch the page content
         const pageRes = await fetch(url);
-        
+
         const html = await pageRes.text();
 
         // Parse the HTML with Cheerio
         const $ = cheerio.load(html);
 
-        const texts = $('body').text();
+        // const texts = $('body').text();
 
         // const text = $('article').first().find('section[name="articleBody"]').text();
 
+        // Remove all script and style tags
+        $('script, style, link, meta, title, head, noscript, header, footer, nav, aside, footer, address').remove();
+        // $('body > *:not(article, main, section)').remove();
+
+        // Extract the text content
+        const text = $.text();
+
+        // Remove excess whitespace and trim the text
+        const cleanedText = text.trim().replace(/\s+/g, ' ');
+
         // Respond with preview text
-        return res.status(200).json({ preview: texts });
+        return res.status(200).json({ preview: cleanedText });
     } catch (error) {
         console.error('Error scraping:', error);
         return res.status(500).json({ error: 'An error occurred during scraping' });

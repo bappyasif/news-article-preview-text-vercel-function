@@ -11,7 +11,9 @@
   "description": "",
   "dependencies": {
     "@huggingface/transformers": "^3.5.0",
+    "@mozilla/readability": "^0.6.0",
     "cheerio": "^1.0.0",
+    "jsdom": "^26.1.0",
     "node-fetch": "^3.3.2",
     "robots-parser": "^3.0.1"
   }
